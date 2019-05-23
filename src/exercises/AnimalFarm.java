@@ -10,10 +10,33 @@ import javax.swing.JOptionPane;
 public class AnimalFarm {
 
 	AnimalFarm() {
-		/* 1. Ask the user which animal they want, then play the sound of that animal. */
 
-		/* 2. Make it so that the user can keep entering new animals. */
+		int answer1 = 0;
+		
+		while (answer1 == 0) {
+			int answer = JOptionPane.showOptionDialog(null, "Which animal sound do you want to hear?", "Animal Farm", 0,
+					JOptionPane.INFORMATION_MESSAGE, null, new String[] { "Cow", "Cat", "Dog", "Duck", "Llama", "Pig" },
+					null);
+			
+			if (answer == 0)
+				playMoo();
+			else if (answer == 1)
+				playMeow();
+			else if (answer == 2)
+				playWoof();
+			else if (answer == 3)
+				playQuack();
+			else if (answer == 4)
+				playLlama();
+			else
+				playOink();
+			
+			answer1 = JOptionPane.showConfirmDialog(null, "Do you want to hear another animal sound?", "",
+					JOptionPane.YES_NO_OPTION);
+		}
 
+
+	
 	}
 
 	void playMoo() {
@@ -28,11 +51,24 @@ public class AnimalFarm {
 		playNoise(woofFile);
 	}
 
+	void playMeow() {
+		playNoise(meowFile);
+	}
+
+	void playLlama() {
+		playNoise(llamaFile);
+	}
+
+	void playOink() {
+		playNoise(pigFile);
+	}
+
 	String quackFile = "sound/quack.wav";
 	String mooFile = "sound/moo.wav";
 	String woofFile = "sound/woof.wav";
 	String meowFile = "sound/meow.wav";
 	String llamaFile = "sound/llama.wav";
+	String pigFile = "sound/oink.wav";
 
 	/* Ignore this stuff */
 
@@ -51,5 +87,5 @@ public class AnimalFarm {
 	public static void main(String[] args) {
 		new AnimalFarm();
 	}
-
 }
+
